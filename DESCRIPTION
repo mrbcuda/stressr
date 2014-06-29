@@ -1,9 +1,23 @@
 Package: stressr
-Type: Package
-Title: What the package does (short line)
-Version: 1.0
-Date: 2014-06-28
-Author: Who wrote it
-Maintainer: Who to complain to <yourfault@somewhere.net>
-Description: More about what it does (maybe more than one line)
-License: What license is it under?
+Title: Fetch and plot financial stress index and component data.
+Version: 1.0.0
+Date: 2014-06-29
+Author: Matt Barry <mrb@softisms.com>
+Maintainer: Matt Barry <mrb@softisms.com>
+Description: Forms queries to submit to the Cleveland Federal Reserve Bank web
+    site's financial stress index data site.  Provides query functions for both the composite stress index and the components data.
+    By default the download includes daily time series data starting September 25, 1991.  The functions
+    return a class of either type easing or cfsi which contain a list of items related to the
+    query and its graphical presentation.  The list includes the time series
+    data as an xts object.  The package provides four lattice time series plots
+    to render the data in a manner similar to the bank's own presentation.
+License: MIT + file LICENSE
+URL: https://github.com/mrbcuda/stressr
+BugReports: https://github.com/mrbcuda/stressr/issues
+Imports:
+    utils,
+    xts,
+    XML,
+    lattice,
+    latticeExtra
+Roxygen: list(wrap = FALSE)
