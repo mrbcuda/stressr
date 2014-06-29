@@ -1,8 +1,10 @@
 #' @title Financial stress index component data xyplot
-#' @description Provides a convenience function for passing an \code{stress} object to \code{xyplot}.
-#' @param x an object of class \code{stress} as returned by \code{\link[stressr]{getStressData}} and its many offspring.
+#' @description Provides a convenience function for passing an \code{cfsi} object to \code{xyplot}.
+#' @param x an object of class \code{stress} as returned by \code{\link[stressr]{getStressIndex}}.
 #' @param ... other parameters passed to \code{\link[lattice]{xyplot}}.
 #' @importFrom lattice xyplot
+#' @importFrom lattice panel.xyplot
+#' @importFrom lattice panel.grid
 #' @export
 #' @seealso stressLineChart stressAreaChart getStressIndex xyplot.stress
 #' @examples
@@ -27,9 +29,11 @@ xyplot.cfsi <- function(x,...) {
 
 #' @title Financial stress index component data xyplot
 #' @description Provides a convenience function for passing an \code{stress} object to \code{xyplot}.
-#' @param x an object of class \code{stress} as returned by \code{\link[stressr]{getStressData}} and its many offspring.
+#' @param x an object of class \code{stress} as returned by \code{\link[stressr]{getStressComponents}} and its many offspring.
 #' @param ... other parameters passed to \code{\link[lattice]{xyplot}}.
 #' @importFrom lattice xyplot
+#' @importFrom lattice panel.xyplot
+#' @importFrom lattice panel.abline
 #' @export
 #' @seealso stressLineChart stressAreaChart getStressComponents xyplot.cfsi
 #' @examples
@@ -130,9 +134,9 @@ stressIndexChart <- function(e,range=NA,showGradeRegions=TRUE) {
              yadj = -0.2
              panel.text(x[1],y=g1+yadj,labels="Low",
                         pos=position,cex=1.2,col=grade)
-             panel.text(x[1],y=g2+yadj,labels="Moderate",
+             panel.text(x[1],y=g2+yadj,labels="Normal",
                         pos=position,cex=1.2,col=grade)
-             panel.text(x[1],y=g3+yadj,labels="Normal",
+             panel.text(x[1],y=g3+yadj,labels="Moderate",
                         pos=position,cex=1.2,col=grade)
              panel.text(x[1],y=g4+yadj,labels="Significant",
                         pos=position,cex=1.2,col=grade)
@@ -144,13 +148,13 @@ stressIndexChart <- function(e,range=NA,showGradeRegions=TRUE) {
 #' @title Financial stress component data as an unstacked line chart.
 #' @description Provides a convenience function for passing a \code{stress} object to \code{xyplot}.
 #' @details Provides several assumptions about the display of the \code{stress} data to correspond to similar presentations at the Cleveland Fed's data site.
-#' @param e an object of class \code{stress} as returned by \code{\link[stressr]{getStressData}} and its many offspring.
+#' @param e an object of class \code{stress} as returned by \code{\link[stressr]{getStressComponents}} and its many offspring.
 #' @param range a range string as used by \code{xts} to subset time series dates, e.g. "1996/1997".  Defaults to NA for full range. 
 #' @importFrom lattice xyplot
 #' @importFrom lattice panel.xyplot
 #' @importFrom lattice panel.grid
 #' @export
-#' @seealso xyplot.stress stressAreaChart getStressData getEquityMarkets getFundingMarkets getCreditMarkets getForeignExchangeMarkets getRealEstateMarkets getSecuritizationMarkets
+#' @seealso xyplot.stress stressAreaChart getStressComponents getComponentSummary getEquityMarkets getFundingMarkets getCreditMarkets getForeignExchangeMarkets getRealEstateMarkets getSecuritizationMarkets
 #' @examples
 #' \dontrun{
 #' es <- getEqityStress()
@@ -191,13 +195,13 @@ stressLineChart <- function(e,range=NA) {
 #' @title Financial stress component data as a stacked area chart.
 #' @description Provides a convenience function for passing a \code{stress} object to \code{xyplot} to render a sand (stacked area) chart.
 #' @details Provides several assumptions about the display of the \code{stress} data to correspond to similar presentations at the Cleveland Fed's data site.  To implement the stacked area chart the function first computes the column-wise value accumulations, then passes these values to the \code{latticeExtra} \code{xyarea} polygon rendering tools.  Plots the columns in reverse stacking order to show the desired overlaps.
-#' @param e an object of class \code{stress} as returned by \code{\link[stressr]{getStressData}} and its many offspring.
+#' @param e an object of class \code{stress} as returned by \code{\link[stressr]{getStressComponents}} and its many offspring.
 #' @param range a range string as used by \code{xts} to subset time series dates, e.g. "1996/1997".  Defaults to NA for full range. 
 #' @importFrom lattice xyplot
 #' @importFrom latticeExtra panel.xyarea
 #' @importFrom lattice panel.grid
 #' @export
-#' @seealso xyplot.stress stressLineChart getStressData getEquityMarkets getFundingMarkets getCreditMarkets getForeignExchangeMarkets getRealEstateMarkets getSecuritizationMarkets
+#' @seealso xyplot.stress stressLineChart getStressComponents getComponentSummary getEquityMarkets getFundingMarkets getCreditMarkets getForeignExchangeMarkets getRealEstateMarkets getSecuritizationMarkets
 #' @examples
 #' \dontrun{
 #' es <- getEquityStress()
