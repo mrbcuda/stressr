@@ -22,7 +22,7 @@ getStressIndex <- function(verbose=FALSE) {
   x <- readHTMLTable(ciurl,
                      header=TRUE,
                      skip.rows=1,
-                     colClasses=c("character",rep("numeric",22)),
+                     colClasses=c("character",rep("numeric",1)),
                      stringsAsFactors=FALSE)
   
   cfsi <- x[[1]]
