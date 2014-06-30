@@ -1,6 +1,7 @@
 Financial Stress Index Data
 ===========================
 
+Update: this package is available [on CRAN](http://cran.r-project.org/web/packages/stressr/index.html).
 
 The R package ```stressr``` provides convenient access to the financial stress index and components data provided by the Federal Reserve Bank of Cleveland.  The package provides data download functions and some representative plots along the same categories as provided by the bank. See the [FRB's terms of use](http://www.clevelandfed.org/utilities/terms_of_use.cfm?DCS.nav=Footer) regarding these data.   
 
